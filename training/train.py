@@ -9,9 +9,6 @@ from os.path import dirname, abspath
 import sys
 from functools import partial
 import pickle
-pickle.load = partial(pickle.load, encoding="latin1")
-pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
-model = torch.load(model_file, map_location=lambda storage, loc: storage, pickle_module=pickle)
 
 sys.path.append(dirname(dirname(abspath(__file__))))
 logging.getLogger().setLevel(logging.INFO)
@@ -46,6 +43,9 @@ GRAD_CLIP_THRESH = 1.0
 TRAINING_PATH = os.path.join("data", "training")
 TENSORBOARD_PATH = os.path.join("data", "tensorboard")
 
+pickle.load = partial(pickle.load, encoding="latin1")
+pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
+model = torch.load(model_file, map_location=lambda storage, loc: storage, pickle_module=pickle)
 
 def train(
     audio_directory,

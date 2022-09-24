@@ -43,8 +43,6 @@ GRAD_CLIP_THRESH = 1.0
 TRAINING_PATH = os.path.join("data", "training")
 TENSORBOARD_PATH = os.path.join("data", "tensorboard")
 
-pickle.load = partial(pickle.load, encoding="latin1")
-pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
 
 
 def train(
